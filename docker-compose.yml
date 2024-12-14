@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  pyspark:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - "4040:4040"  # Spark UI port
+    environment:
+      - SPARK_LOCAL_IP=pyspark
+    extra_hosts:
+      - "pyspark:127.0.0.1"
